@@ -1,3 +1,5 @@
+const runningAsScript = require.main !== module;
+
 function multiple(char, it) {
     let toReturn = "";
     for(let i = 0; i < it; i++) {
@@ -56,4 +58,11 @@ function fromBrain(input) {
     }
 
     return cursor.filter(e => typeof e === "string").join("");
+}
+
+if(runningAsScript) {
+    module.exports = {
+        toBrain,
+        fromBrain
+    };
 }
