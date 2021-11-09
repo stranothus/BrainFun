@@ -1,6 +1,6 @@
 # Brain- Oop
 
-BrainF is an esoteric coding language, typically used for jokes. It uses minimalistic syntax for basic tasks. This is an ASCII text to BrainF converter and a no-input BrainF compiler.
+BrainF is an esoteric coding language, typically used for jokes. It uses minimalistic syntax for basic tasks. This is an ASCII text to BrainF converter and a BrainF compiler.
 
 | Commands | Syntax |
 |----------|--------|
