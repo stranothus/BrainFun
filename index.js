@@ -1,4 +1,10 @@
 const runningAsScript = require.main !== module;
+const browser = typeof window !== "undefined";
+
+const rl = !browser ? require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout
+}) : "";
 
 function multiple(char, it) {
     let toReturn = "";
@@ -20,7 +26,7 @@ function toBrain(ascii) {
     }).join("\n");
 }
 
-function fromBrain(input) {
+async function fromBrain(input) {
     let cursor = [];
     let rn = 0;
     let startLoop;
@@ -54,9 +60,22 @@ function fromBrain(input) {
                     startLoop = undefined;
                 }
             break;
+            case ",":
+                if(browser) {
+                    cursor[rn] = prompt("").charCodeAt(0);
+                } else {
+                    await new Promise((resolve, reject) => 
+                        rl.question("", input => {
+                            cursor[rn] = input.charCodeAt(0);
+                            resolve(true);
+                            rl.close();
+                        })
+                    );
+                }
+            break;
         }
     }
-
+    
     return cursor.filter(e => typeof e === "string").join("");
 }
 
