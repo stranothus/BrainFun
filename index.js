@@ -55,5 +55,5 @@ function fromBrain(input) {
         }
     }
 
-    console.log(cursor.filter(e => typeof e === "string").join(""));
+    return cursor.filter(e => typeof e === "string").join("");
 }
